@@ -1,9 +1,15 @@
-import { Router, RouterConfiguration } from 'aurelia-router';
+import {WebAPI} from './web-api';
+import { inject } from 'aurelia-framework';
 
+@inject(WebAPI)
 export class App {
-  router: Router;
+  /*static inject() { return [WebAPI]; }*/
 
-  configureRouter(config: RouterConfiguration, router: Router){
+  constructor(api) {
+    this.api = api;
+  }
+
+  configureRouter(config, router){
     config.title = 'Contacts';
     config.map([
       { route: '',              moduleId: 'no-selection',   title: 'Select'},
